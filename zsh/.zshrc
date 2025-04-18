@@ -66,6 +66,9 @@ export LANG=en_US.UTF-8
 alias tmux="tmux -f $TMUX_CONF"
 alias a="attach"
 
+# Zoxide + Fzf + Nvim
+alias nzo="~/scripts/zoxide_nvim.sh"
+
 # Next level of an ls
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 
