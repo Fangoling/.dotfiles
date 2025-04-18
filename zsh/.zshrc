@@ -19,6 +19,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Path to my Latex installation
+export PATH="/Library/TeX/texbin:$PATH"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
