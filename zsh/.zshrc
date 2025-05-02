@@ -36,7 +36,10 @@ ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
 
-#FZF
+# NOTE: Zoxide
+eval "$(zoxide init zsh)"
+
+# NOTE: FZF
 eval "$(fzf --zsh)"
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
