@@ -24,27 +24,27 @@
    l_sys1 (layer-toggle sys1)
    l_sys2 (layer-toggle sys2)
    l_num (layer-toggle num)
-   t (tap-hold $tap-time $hold-time t @l_cmd)
-   n (tap-hold $tap-time $hold-time n @l_cmd)
-   s (tap-hold $tap-time $hold-time s @l_sys1)
-   e (tap-hold $tap-time $hold-time e @l_sys1)
-   r (tap-hold $tap-time $hold-time r @l_sys2)
-   i (tap-hold $tap-time $hold-time-slow i @l_sys2)
-   a (tap-hold $tap-time $hold-time-slow a @l_num)
-   o (tap-hold $tap-time $hold-time-slow o @l_num)
-   w (tap-hold $tap-time $hold-time-slow w lctl)
-   f (tap-hold $tap-time $hold-time f lalt)
-   p (tap-hold $tap-time $hold-time p lmet)
-   y (tap-hold $tap-time $hold-time-slow y lctl)
-   u (tap-hold $tap-time $hold-time u lalt)
-   l (tap-hold $tap-time $hold-time l rmet)
+   s (tap-hold $tap-time $hold-time s @l_cmd)
+   h (tap-hold $tap-time $hold-time h @l_cmd)
+   t (tap-hold $tap-time $hold-time t @l_sys1)
+   a (tap-hold $tap-time $hold-time a @l_sys1)
+   r (tap-hold $tap-time $hold-time-slow r @l_sys2)
+   e (tap-hold $tap-time $hold-time-slow e @l_sys2)
+   n (tap-hold $tap-time $hold-time-slow n @l_num)
+   i (tap-hold $tap-time $hold-time-slow i @l_num)
+   l (tap-hold $tap-time $hold-time-slow l lctl)
+   d (tap-hold $tap-time $hold-time d lalt)
+   w (tap-hold $tap-time $hold-time w lmet)
+   u (tap-hold $tap-time $hold-time-slow u lctl)
+   o (tap-hold $tap-time $hold-time o lalt)
+   f (tap-hold $tap-time $hold-time f rmet)
    d_h (tap-hold $tap-time $hold-time del home)
    p_e (tap-hold $tap-time $hold-time M-[ end)
    c_uz_r (chord underscore r)
    c_uz_t (chord underscore t)
    c_uz_s (chord underscore s)
-   c_apos_n (chord apos n)
-   c_apos_e (chord apos e)
+   c_apos_h (chord apos h)
+   c_apos_a (chord apos a)
    mc C-up ;; Mission Control
   sls M-spc ;; Spotlight Search
   dtn S-C-A-M-f5 ;; Dictation
@@ -53,24 +53,25 @@
 )
 (defchords underscore 15
   (r    ) @r
-  (  s  ) @s
-  (    t) @t
-  (r s  ) - 
-  (  s t) z 
+  (  t  ) @t
+  (    s) @s
+  (r t  ) - 
+  (  t s) z 
 )
 
 (defchords apos 15
-  (n  ) @n
-  (  e) @e
-  (n e) ' 
+  (h  ) @h
+  (  a) @a
+  (h a) ' 
 )
 
-(deflayer colemak 
+
+(deflayer graphite 
   esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
   XX        XX    XX    XX        XX        XX    XX    XX    XX    XX    XX    XX    XX    XX
-  XX        q    @w     @f        @p        b    j    @l    @u    @y    ;    XX    XX    XX 
-  XX        @a   @c_uz_r @c_uz_s  @c_uz_t   g    m    @c_apos_n    @c_apos_e    @i    @o    XX XX
-  XX   z   x    c      d         v       `    k    h    ,    .    /   XX
+  XX        b    @l     @d        @w        z    ;    @f    @o    @u    j    XX    XX    XX 
+  XX        @n   @c_uz_r @c_uz_t  @c_uz_s   g    y    @c_apos_h   @c_apos_a    @e    @i    XX    XX 
+  XX        q     x      m         c        v    XX   k      p    .     ,      /   XX
   XX   XX   XX         @tmeh        XX XX  
 )
 
@@ -87,16 +88,16 @@
   esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
   XX         XX    XX    XX    XX    XX      XX    XX    XX    XX    XX     XX    XX    XX
   XX         S-1   S-2   S-3   S-4   S-5     S-6   S-7   S-8   S-9   S-0    XX    XX    XX 
-  XX         `     S-2   -     \     S-\     XX    S-;   ;     [     ]      XX    XX
+  XX         '      S-'  -     \     S-\     XX    S-;   ;     [     ]      XX    XX
   XX   XX    XX    XX    XX    XX    XX      lsft    +     =     S-[   S-]    XX     
   XX   XX   XX lmet XX XX 
 )
 (deflayer sys2 
 esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
-  XX        XX   XX    XX     XX     XX       XX    XX    XX    XX     XX    XX    XX    XX
-  XX        XX   XX    A-]    S-A-]    M-v       XX    XX    XX    XX     XX    XX    XX    XX 
-  XX        XX   XX    A-[    S-A-[     XX     XX       XX    XX    XX    XX   XX     XX 
-  XX   XX   XX   XX    XX     M-c    XX     lsft     XX    XX      XX     XX    XX
+  XX        XX   XX    XX    XX    XX       XX      XX    XX     XX      XX    XX    XX    XX
+  XX        XX   XX    XX    XX    XX       XX     A-7    A-8    A-9     XX    XX    XX    XX 
+  XX        XX   XX    XX    XX    XX       XX     A-4    A-5    A-6     XX    XX    XX 
+  XX   XX   XX   XX    XX    XX    XX     lsft     A-1    A-2    A-3     XX    XX
   XX   XX   XX lmet XX XX 
 )
 (deflayer num 
@@ -107,3 +108,4 @@ esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    �
   XX   XX    XX    XX   XX     XX     XX     lsft    1     2     3     XX    XX
   XX   XX   XX lmet XX XX 
 )
+

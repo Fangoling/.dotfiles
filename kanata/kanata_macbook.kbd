@@ -1,0 +1,118 @@
+;; This is a config for a macbook m4
+(defsrc
+  esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12
+  IntlBackslash  1    2    3    4    5       6    7    8    9    0       -    =    bspc
+  tab            q    w    e    r    t       y    u    i    o    p       [    ]    ret 
+  caps           a    s    d    f    g       h    j    k    l    ;       '    \ 
+  lsft   `       z    x    c    v    b       n    m    ,    .    /       rsft
+  lctl           lalt lmet          spc            rmet ralt
+) 
+
+(defvar
+  ;; Note: consider using different time values for your different fingers.
+  ;; For example, your pinkies might be slower to release keys and index
+  ;; fingers faster.
+  tap-time 200
+  hold-time 200 
+  hold-time-slow 300 
+)
+
+(defalias
+  meh  (multi ctl alt sft)
+  tmeh (tap-hold $tap-time $hold-time spc lsft)
+   l_cmd (layer-toggle cmd)
+   l_sys1 (layer-toggle sys1)
+   l_sys2 (layer-toggle sys2)
+   l_num (layer-toggle num)
+   l_sys3 (layer-toggle sys3)
+   t (tap-hold $tap-time $hold-time t @l_cmd)
+   n (tap-hold $tap-time $hold-time n @l_cmd)
+   s (tap-hold $tap-time $hold-time s @l_sys1)
+   e (tap-hold $tap-time $hold-time e @l_sys1)
+   r (tap-hold $tap-time $hold-time r @l_sys2)
+   i (tap-hold $tap-time $hold-time-slow i @l_sys2)
+   a (tap-hold $tap-time $hold-time-slow a @l_num)
+   o (tap-hold $tap-time $hold-time-slow o @l_num)
+   w (tap-hold $tap-time $hold-time-slow w lctl)
+   f (tap-hold $tap-time $hold-time f lalt)
+   p (tap-hold $tap-time $hold-time p lmet)
+   y (tap-hold $tap-time $hold-time-slow y lctl)
+   u (tap-hold $tap-time $hold-time u lalt)
+   l (tap-hold $tap-time $hold-time l rmet)
+   d_h (tap-hold $tap-time $hold-time del home)
+   p_e (tap-hold $tap-time $hold-time M-[ end)
+   c_uz_r (chord underscore r)
+   c_uz_t (chord underscore t)
+   c_uz_s (chord underscore s)
+   c_apos_n (chord apos n)
+   c_apos_e (chord apos e)
+   mc C-up ;; Mission Control
+  sls M-spc ;; Spotlight Search
+  dtn S-C-A-M-f5 ;; Dictation
+  dnd S-C-A-M-f6 ;; Do Not Disturb
+  lp S-C-A-M-l ;; Launchpad
+)
+(defchords underscore 15
+  (r    ) @r
+  (  s  ) @s
+  (    t) @t
+  (r s  ) - 
+  (  s t) z 
+)
+
+(defchords apos 15
+  (n  ) @n
+  (  e) @e
+  (n e) ' 
+)
+
+(deflayer colemak 
+  esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX        XX    XX    XX        XX        XX    XX    XX    XX    XX    XX    XX    XX    XX
+  XX        q    @w     @f        @p        b    j    @l    @u    @y    ;    XX    XX    XX 
+  XX        @a   @c_uz_r @c_uz_s  @c_uz_t   g    m    @c_apos_n    @c_apos_e    @i    @o    XX XX
+  XX   z   x    c      d         v       `    k    h    ,    .    /   XX
+  XX   XX   XX         @tmeh        XX XX  
+)
+
+(deflayer cmd 
+  esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX   XX   XX     XX        XX     XX     XX    XX     XX    XX      XX     XX    XX    XX
+  XX   tab   esc    C-S-tab   C-tab  XX    XX    M-c    up    bspc    M-v    XX    XX    XX 
+  XX   M-tab   @d_h   @p_e      M-]    C-M-S-4    XX    left   down  right   ret    XX    XX 
+  XX   XX   XX     XX        XX     XX    XX     lsft     XX    XX      XX     XX    XX
+  XX   XX   XX lmet XX XX 
+)
+
+(deflayer sys3 
+  esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX         XX    XX    XX    XX    XX      XX    XX    XX    XX    XX     XX    XX    XX
+  XX         S-1   S-2   S-3   S-4   S-5     S-6   S-7   S-8   S-9   S-0    XX    XX    XX 
+  XX         '      S-'  -     \     S-\     S--    S-;   ;     [     ]      XX    XX
+  XX   XX    XX    XX    XX    XX    XX      lsft    +     =     S-[   S-]    XX     
+  XX   XX   XX lmet XX XX 
+)
+(deflayer sys2 
+esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX        XX   XX    XX    XX    XX       XX      XX    XX     XX      XX    XX    XX    XX
+  XX        XX   XX    XX    XX    XX       XX     A-7    A-8    A-9     XX    XX    XX    XX 
+  XX        XX   XX    XX    XX    XX       XX     A-4    A-5    A-6     XX    XX    XX 
+  XX   XX   XX   XX    XX    XX    XX     lsft     A-1    A-2    A-3     XX    XX
+  XX   XX   XX lmet XX XX 
+)
+(deflayer sys1
+  esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX         XX    XX    XX    XX    XX      XX    XX    XX    XX    XX     XX    XX    XX
+  XX         S-1   S-2   S-3   S-5   XX     XX   S-6   S-9   S-0   S-4    XX    XX    XX 
+  XX         '      S-[  S-]   S-'   XX      XX    S-;   [    ]     ;      XX    XX
+  XX   XX    XX    S--    -     \   XX      S-\    +     =     S-8   S-7    XX     
+  XX   XX   XX lmet XX XX 
+)
+(deflayer num 
+esc     🔅    🔆    @mc   @sls  @dtn  @dnd  ◀◀    ▶⏸    ▶▶    🔇    🔉    🔊
+  XX         XX    XX   XX     XX     XX       XX    XX    XX    XX    XX    XX    XX    XX
+  XX         XX    XX   XX     XX     XX       XX    7     8     9     0     XX    XX    XX
+  XX         XX    XX   XX     XX     XX       XX    4     5     6     .     XX    XX     
+  XX   XX    XX    XX   XX     XX     XX     lsft    1     2     3     XX    XX
+  XX   XX   XX lmet XX XX 
+)
